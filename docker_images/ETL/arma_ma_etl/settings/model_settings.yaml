@@ -1,0 +1,94 @@
+
+XRT:
+  order: 1,0,1
+  sector: 'RETAIL'
+  asset_class: 'CASH_EQUITY'
+
+XLF:
+  order: 1,0,1
+  sector: 'FINANCIALS'
+  asset_class: 'CASH_EQUITY'
+
+XLE:
+  order: 2,0,2
+  sector: 'ENERGY'
+  asset_class: 'CASH_EQUITY'
+
+XLU:
+  order: 1,0,1
+  sector: "UTILITIES"
+  asset_class: 'CASH_EQUITY'
+
+XLI:
+  order: 1,0,1
+  sector: "INDUSTRIALS"
+  asset_class: 'CASH_EQUITY'
+
+XLK:
+  order: 1,0,1
+  sector: "TECHNOLOGY"
+  asset_class: 'CASH_EQUITY'
+
+XLV:
+  order: 1,0,1
+  sector: "HEALTHCARE"
+  asset_class: 'CASH_EQUITY'
+
+XLY:
+  order: 1,0,1
+  sector: 'CONSUMER_DISCRETIONARY'
+  asset_class: 'CASH_EQUITY'
+
+XLP:
+  order: 1,0,1
+  sector: 'CONSUMER_STAPLES'
+  asset_class: 'CASH_EQUITY'
+
+XLB:
+  order: 1,0,1
+
+XOP:
+  order: 3,0,3
+  sector: 'OIL_AND_GAS_EXPLORATION_AND_PRODUCTION'
+  asset_class: 'CASH_EQUITY'
+
+IYR:
+  order: 1,0,1
+  sector: 'OIL_AND_GAS_EXPLORATION_AND_PRODUCTION'
+  asset_class: 'CASH_EQUITY'
+
+XTL:
+  order: 2,0,2
+  sector: 'US_REALESTATE'
+  asset_class: 'CASH_EQUITY'
+
+CANE:
+  order: 1,0,1
+  asset_class: 'COMMODITY_ETF'
+
+WEAT:
+  order: 1,0,1
+  asset_class: 'COMMODITY_ETF'
+  commodity_type: 'SOFT'
+
+CORN:
+  order: 1,0,1
+  asset_class: 'COMMODITY_ETF'
+  commodity_type: 'SOFT'
+
+CPER:
+  order: 1,0,1
+  asset_class: 'COMMODITY_ETF'
+  commodity_type: 'METALS'
+
+SOYB:
+  order: 1,0,1
+  asset_class: 'COMMODITY_ETF'
+  commodity_type: 'SOFT'
+
+TLT:
+  order: 1,0,1
+  asset_class: 'US_TREASURY_ETF'
+  duration: '20_TO_30YR'
+
+
