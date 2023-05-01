@@ -33,6 +33,22 @@ def trainARMAModel(ticker,todays_date,payload):
 
     }
 
+    cacheMetadata = {
+
+        'asofdate':[],
+        'aic':[],
+        'bic':[],
+        'hqic':[],
+        'mae':[],
+        'mse':[],
+        'forecastHorizon':[],
+        'trainDFLength':[],
+        'order_p':[],
+        'order_q':[],
+        'product_name':[],
+
+    }
+
     # reading in the dataframe
     dataframe = wr.s3.read_csv(f"""s3://jamsyd-market-data/marketdata/yfinance/{ticker}/{todays_date}.csv""")
 
@@ -44,8 +60,8 @@ def trainARMAModel(ticker,todays_date,payload):
     res = mod.fit()
 
     # generating forecasts
-    fcast = res.forecast(payload['forecastHorizon'])
-    fcast = (np.exp(fcast.reset_index()['predicted_mean']) - 1).cumsum() + 1
+    fcast          = res.forecast(payload['forecastHorizon'])
+    fcast          = (np.exp(fcast.reset_index()['predicted_mean']) - 1).cumsum() + 1
     rescaled_fcast = fcast*dataframe[payload['column']].iloc[-1]
 
     # store the results
@@ -77,6 +93,23 @@ def trainARMAModel(ticker,todays_date,payload):
         cacheForecasts['retScore'].append(ret_score)
         cacheForecasts['entryPrice'].append(dataframe[payload['column']].iloc[-1])
         cacheForecasts['entry_date'].append(todays_date)
+
+    cacheMetadata['asofdate'].append(todays_date)
+    cacheMetadata['aic'].append(res.aic)
+    cacheMetadata['bic'].append(res.bic)
+    cacheMetadata['hqic'].append(res.hqic)
+    cacheMetadata['mae'].append((np.mean(np.abs(res.resid))))
+    cacheMetadata['mse'].append((np.mean(np.square(res.resid))))
+    cacheMetadata['forecastHorizon'].append(payload['forecastHorizon'])
+    cacheMetadata['trainDFLength'].append(252)
+    cacheMetadata['order_p'].append(payload['order'][0])
+    cacheMetadata['order_q'].append(payload['order'][1])
+    cacheMetadata['product_name'].append(ticker)
+    
+    print(cacheMetadata)
+    print(pd.DataFrame(cacheMetadata))
+
+    wr.s3.to_csv(pd.DataFrame(cacheMetadata),f"""s3://jamsyd-model-metadata/arma-ma/metadata/{ticker}/{todays_date}.csv""")
 
     return pd.DataFrame(cacheForecasts)
 

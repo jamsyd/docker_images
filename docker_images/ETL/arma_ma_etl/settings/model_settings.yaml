@@ -64,31 +64,41 @@ XTL:
 
 CANE:
   order: 1,0,1
+  sector: 'SOFT'
   asset_class: 'COMMODITY_ETF'
 
 WEAT:
   order: 1,0,1
+  sector: 'SOFT'
   asset_class: 'COMMODITY_ETF'
-  commodity_type: 'SOFT'
 
 CORN:
   order: 1,0,1
+  sector: 'SOFT'
   asset_class: 'COMMODITY_ETF'
-  commodity_type: 'SOFT'
 
 CPER:
   order: 1,0,1
+  sector: 'METALS'
   asset_class: 'COMMODITY_ETF'
-  commodity_type: 'METALS'
+  
 
 SOYB:
   order: 1,0,1
+  sector: 'SOFT'
   asset_class: 'COMMODITY_ETF'
-  commodity_type: 'SOFT'
-
+  
 TLT:
   order: 1,0,1
+  sector: '20_TO_30YR' 
   asset_class: 'US_TREASURY_ETF'
-  duration: '20_TO_30YR'
 
+DAX:
+  order: 2,0,2
+  sector: 'GERMAN_EQUITIES'
+  asset_class: 'GLBOAL_EQUITIES'
 
+SPY:
+  order: 1,0,1
+  sector: 'US_EQUITIES'
+  asset_class: 'GLOBAL_EQUITIES'

@@ -1,0 +1,35 @@
+DAX:
+  order: 2,0,2
+
+EEM:
+  order: 1,0,1
+
+EPOL:
+  order: 1,0,1
+
+EPU:
+  order: 1,0,1
+
+ECH:
+  order: 2,0,2
+
+EWZ:
+  order: 3,0,3
+
+EWJ:
+  order: 3,0,3
+
+EWT:
+  order: 3,0,3
+
+MCHI:
+  order: 2,0,2
+
+THD:
+  order: 2,0,2
+
+EWM:
+  order: 2,0,2
+
+SPY:
+  order: 1,0,1

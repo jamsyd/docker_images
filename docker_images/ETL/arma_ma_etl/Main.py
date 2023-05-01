@@ -33,8 +33,9 @@ with open('settings/model_settings.yaml', 'r') as stream:
 
 stream.close()
 
-#input_data = wr.s3.read_json(path="""s3://jamsyd-model-metadata/arma-ma/model-definition/arma_ma_model_definitions.json""")
-
+#print(pd.DataFrame(input_data))
+#input_data = wr.s3.to_json(pd.DataFrame(input_data),path=f"""s3://jamsyd-model-metadata/arma-ma/model-definition/arma_ma/{todays_date}.json""")
+# Need to add which column for the input data
 for ticker in input_data:
 
     payload = {
@@ -65,6 +66,7 @@ wr.s3.to_csv(pd.concat(master_trade_df,axis=0),f"""s3://jamsyd-forecasts/arma_ma
 wr.s3.to_csv(pd.DataFrame(np.array([todays_date]),columns=["train_dates"]),f"""s3://jamsyd-model-metadata/arma-ma/training-dates/trading_dates.csv""")
 
 # saving positions to s3
-wr.s3.to_csv(cachePositions(todays_date,pd.read_csv(r'/home/ec2-user/docker_images/ETL/arma_ma_etl/test.csv')),f"""s3://jamsyd-positions/positions/arma_ma/{todays_date}.csv""")
+print(master_trade_df)
+wr.s3.to_csv(cachePositions(todays_date,pd.concat(master_trade_df,axis=0)),f"""s3://jamsyd-positions/positions/arma_ma/{todays_date}.csv""")
 
 
